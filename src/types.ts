@@ -27,6 +27,9 @@ export interface PostDetails {
   darkBgColor: string; // Dynamic dark elegante color
   isDarkTheme: boolean;
   useExtractedPalette: boolean;
+  titleFontSize?: number; // customized font size in px
+  titleHighlight?: 'normal' | 'marker' | 'gradient' | 'border-solid';
+  titleUppercase?: boolean;
 }
 
 export interface SavedArt {

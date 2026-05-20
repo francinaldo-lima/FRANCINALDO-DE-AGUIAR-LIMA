@@ -397,8 +397,25 @@ export function Sidebar({ details, onChange, extractedPalette, onPaletteExtracte
         </label>
 
         {/* Título */}
-        <div className="flex flex-col gap-1">
-          <span className="text-[10px] font-bold text-neutral-500 dark:text-neutral-400">Título Principal</span>
+        <div className="flex flex-col gap-2 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-850 p-3 rounded-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold text-neutral-600 dark:text-neutral-300">Título Principal</span>
+            
+            {/* Case transformation selection */}
+            <button
+              type="button"
+              onClick={() => onChange({ titleUppercase: !details.titleUppercase })}
+              className={`text-3xs font-black px-2 py-0.5 rounded transition ${
+                details.titleUppercase 
+                  ? 'bg-green-600 text-white' 
+                  : 'bg-neutral-200 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
+              }`}
+              title="Alternar CAIXA ALTA"
+            >
+              aA (CAIXA ALTA)
+            </button>
+          </div>
+          
           <textarea
             value={details.title}
             onChange={(e) => onChange({ title: e.target.value })}
@@ -406,6 +423,71 @@ export function Sidebar({ details, onChange, extractedPalette, onPaletteExtracte
             rows={2}
             className="w-full text-xs p-2 rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black text-neutral-800 dark:text-neutral-200 focus:outline-none focus:ring-1 focus:ring-green-600"
           />
+
+          {/* Sizing & Styling controls for high-highlighting / responsive customization */}
+          <div className="flex flex-col gap-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 pt-2 mt-1">
+            <div className="flex items-center justify-between text-3xs">
+              <span className="text-neutral-500 font-bold">Tamanho Responsivo do Título:</span>
+              <span className="text-green-600 dark:text-green-400 font-mono font-bold text-[10px]">
+                {details.titleFontSize ?? 28}px
+              </span>
+            </div>
+            
+            <div className="flex items-center gap-2">
+              <input
+                type="range"
+                min="16"
+                max="72"
+                value={details.titleFontSize ?? 28}
+                onChange={(e) => onChange({ titleFontSize: parseInt(e.target.value, 10) })}
+                className="flex-grow accent-green-600 h-1 bg-neutral-200 rounded-lg cursor-pointer"
+              />
+              
+              {/* Quick Preset Buttons */}
+              <div className="flex gap-1">
+                {[22, 28, 36, 44, 56].map((sz) => (
+                  <button
+                    key={sz}
+                    type="button"
+                    onClick={() => onChange({ titleFontSize: sz })}
+                    className={`px-1 py-0.5 text-3xs font-extrabold rounded ${
+                      (details.titleFontSize ?? 28) === sz
+                        ? 'bg-green-600 text-white'
+                        : 'bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-500'
+                    }`}
+                  >
+                    {sz === 22 ? 'P' : sz === 28 ? 'M' : sz === 36 ? 'G' : sz === 44 ? 'XG' : 'GIG'}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Destaque Estilos de Destaque */}
+            <div className="flex flex-col gap-1">
+              <span className="text-[9px] font-bold text-neutral-500">Destaque do Título:</span>
+              <div className="grid grid-cols-4 gap-1">
+                {[
+                  { id: 'normal', name: 'Simples' },
+                  { id: 'marker', name: 'Marca-txt' },
+                  { id: 'gradient', name: 'Gradiente' },
+                  { id: 'border-solid', name: 'Contorno' }
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => onChange({ titleHighlight: item.id as any })}
+                    className={`py-1 text-[8.5px] font-extrabold rounded-md text-center border capitalize truncate transition ${
+                      (details.titleHighlight ?? 'normal') === item.id
+                        ? 'bg-green-150 dark:bg-green-950/40 border-green-600 text-green-700 dark:text-green-400 font-bold'
+                        : 'border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400'
+                    }`}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Subtítulo */}

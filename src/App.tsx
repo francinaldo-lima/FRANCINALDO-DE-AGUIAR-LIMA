@@ -35,7 +35,10 @@ export default function App() {
     secondaryColor: '#C8102E', // IFMA Red default
     darkBgColor: '#0a1d12', // Warm dark Charcoal/Green default
     isDarkTheme: false,
-    useExtractedPalette: false
+    useExtractedPalette: false,
+    titleFontSize: 28,
+    titleHighlight: 'normal',
+    titleUppercase: false
   });
 
   const [extractedPalette, setExtractedPalette] = useState<string[]>([]);

@@ -60,6 +60,73 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
       <span className="text-2xs opacity-40 mt-1">Carregue uma imagem principal para a arte</span>
     </div>
   );
+  
+  // Helper to render customized, highlighted, and fully responsive title
+  const renderTitle = (defaultClass: string, fallbackText: string, extraStyle: React.CSSProperties = {}) => {
+    let titleText = details.title || fallbackText;
+    if (details.titleUppercase || defaultClass.includes('uppercase')) {
+      titleText = titleText.toUpperCase();
+    }
+
+    const finalStyle = { ...extraStyle };
+    if (details.titleFontSize) {
+      finalStyle.fontSize = `${details.titleFontSize}px`;
+    }
+
+    const highlight = details.titleHighlight ?? 'normal';
+    switch (highlight) {
+      case 'marker':
+        return (
+          <h1 className={`${defaultClass} leading-[1.3]`} style={finalStyle}>
+            <span className="inline px-2.5 py-1.5 rounded bg-stone-900 text-white shadow-sm" 
+                  style={{ 
+                    backgroundColor: primaryColor,
+                    boxDecorationBreak: 'clone',
+                    WebkitBoxDecorationBreak: 'clone',
+                    color: '#ffffff',
+                    textShadow: 'none',
+                    backgroundImage: 'none',
+                    WebkitTextFillColor: 'initial',
+                    WebkitBackgroundClip: 'initial'
+                  }}>
+              {titleText}
+            </span>
+          </h1>
+        );
+      case 'gradient':
+        return (
+          <h1 className={`${defaultClass} bg-clip-text text-transparent`} 
+              style={{
+                ...finalStyle,
+                backgroundImage: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor}, ${details.isDarkTheme ? '#ffffff' : '#0f172a'})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: 'none',
+              }}>
+            {titleText}
+          </h1>
+        );
+      case 'border-solid':
+        return (
+          <h1 className={`${defaultClass} tracking-wide font-black`}
+              style={{
+                ...finalStyle,
+                color: details.isDarkTheme ? '#ffffff' : '#0d2214',
+                textShadow: `-1px -1px 0 ${primaryColor}, 1px -1px 0 ${primaryColor}, -1px 1px 0 ${primaryColor}, 1px 1px 0 ${primaryColor}, 4px 4px 0px ${secondaryColor}70`,
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))'
+              }}>
+            {titleText}
+          </h1>
+        );
+      case 'normal':
+      default:
+        return (
+          <h1 className={defaultClass} style={finalStyle}>
+            {titleText}
+          </h1>
+        );
+    }
+  };
 
   // RENDER DYNAMIC LAYOUT PARTS
   const renderLayout = () => {
@@ -122,10 +189,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
               {/* Title group */}
               <div className="flex flex-col gap-1.5">
-                <h1 className="text-2xl md:text-[27px] font-[1000] tracking-tight leading-[112%] filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
-                    style={{ color: details.isDarkTheme ? '#ffffff' : '#0a1d12' }}>
-                  {details.title || 'Título da Notícia Institucional'}
-                </h1>
+                {renderTitle(
+                  "text-2xl md:text-[27px] font-[1000] tracking-tight leading-[112%] filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]",
+                  "Título da Notícia Institucional",
+                  { color: details.isDarkTheme ? '#ffffff' : '#0a1d12' }
+                )}
                 {details.subtitle && (
                   <p className="text-xs font-semibold leading-relaxed opacity-90 border-l-3 pl-2.5"
                      style={{ borderColor: primaryColor, color: details.isDarkTheme ? '#cbd5e1' : '#4b5563' }}>
@@ -184,12 +252,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               </span>
               
               {/* Premium Gradient Title with extreme contrast shadow */}
-              <h1 className="text-2xl md:text-[34px] font-[1000] tracking-tighter leading-[108%] uppercase bg-clip-text text-transparent bg-gradient-to-r filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.18)]"
-                  style={{ 
-                    backgroundImage: `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`
-                  }}>
-                {details.title || 'CONGRESSO ACADÊMICO'}
-              </h1>
+              {renderTitle(
+                "text-2xl md:text-[34px] font-[1000] tracking-tighter leading-[108%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.18)]",
+                "CONGRESSO ACADÊMICO",
+                { backgroundImage: `linear-gradient(to right, ${primaryColor}, ${secondaryColor})` }
+              )}
               {details.subtitle && (
                 <p className="text-[11px] font-bold tracking-widest text-[#52525b] dark:text-[#a1a1aa] uppercase mt-0.5">
                   {details.subtitle}
@@ -285,9 +352,10 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               </div>
               
               {/* Ultra highlighted sporty title */}
-              <h1 className="text-3xl md:text-[42px] font-[1000] tracking-tighter italic text-yellow-300 uppercase leading-[100%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)] filter saturate-150">
-                {details.title || 'MOMENTO ESPORTE'}
-              </h1>
+              {renderTitle(
+                "text-3xl md:text-[42px] font-[1000] tracking-tighter italic text-yellow-300 uppercase leading-[100%] drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)] filter saturate-150",
+                "MOMENTO ESPORTE"
+              )}
               {details.subtitle && (
                 <p className="text-[10px] font-black tracking-widest text-[#ffffffea] uppercase mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
                   {details.subtitle}
@@ -378,10 +446,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               
               {/* Premium Boxed Title for Celebration */}
               <div className="inline-block py-2 px-4 rounded-2xl bg-white/20 dark:bg-black/35 backdrop-blur-md border border-neutral-200/10 shadow-lg">
-                <h1 className="text-2xl md:text-[29px] font-black tracking-tight leading-tight uppercase"
-                    style={{ color: primaryColor }}>
-                  ✨ {details.title || 'Parabéns e Celebrações'} ✨
-                </h1>
+                {renderTitle(
+                  "text-2xl md:text-[29px] font-black tracking-tight leading-tight uppercase",
+                  "Parabéns e Celebrações",
+                  { color: primaryColor }
+                )}
               </div>
               
               {details.subtitle && (
@@ -453,19 +522,26 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               <div className="flex gap-3 items-stretch my-1 text-left">
                 <div className="w-1.5 rounded" style={{ backgroundColor: primaryColor }} />
                 
-                <h1 className="text-2xl md:text-[27px] font-light tracking-tight text-neutral-900 leading-[115%]">
-                  {details.title ? (
-                    <span>
-                      {details.title.split(' ').map((word, i) => (
-                        <span key={i} className={i === 0 || i === 1 ? 'font-[1000] text-stone-950 pr-1.5 block md:inline uppercase' : 'font-light text-stone-700 pr-1.5'}>
-                          {word}
-                        </span>
-                      ))}
-                    </span>
-                  ) : (
-                    <span className="font-[1000] text-stone-950 block uppercase">Informativo</span>
-                  )}
-                </h1>
+                {details.titleHighlight !== 'normal' || details.titleFontSize || details.titleUppercase ? (
+                  renderTitle(
+                    "text-2xl md:text-[27px] font-light tracking-tight text-neutral-900 leading-[115%]",
+                    "Informativo"
+                  )
+                ) : (
+                  <h1 className="text-2xl md:text-[27px] font-light tracking-tight text-neutral-900 leading-[115%]">
+                    {details.title ? (
+                      <span>
+                        {details.title.split(' ').map((word, i) => (
+                          <span key={i} className={i === 0 || i === 1 ? 'font-[1000] text-stone-950 pr-1.5 block md:inline uppercase' : 'font-light text-stone-700 pr-1.5'}>
+                            {word}
+                          </span>
+                        ))}
+                      </span>
+                    ) : (
+                      <span className="font-[1000] text-stone-950 block uppercase">Informativo</span>
+                    )}
+                  </h1>
+                )}
               </div>
 
               {details.subtitle && (
@@ -550,9 +626,10 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                        borderColor: `${primaryColor}40` 
                      }} />
                 
-                <h1 className="text-xl md:text-[23px] font-[1000] tracking-tight leading-tight uppercase text-yellow-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
-                  {details.title || '#ConexãoEstudantil IFMA'}
-                </h1>
+                {renderTitle(
+                  "text-xl md:text-[23px] font-[1000] tracking-tight leading-tight uppercase text-yellow-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]",
+                  "#ConexãoEstudantil IFMA"
+                )}
                 {details.subtitle && (
                   <p className="text-[10.5px] text-white font-extrabold uppercase tracking-widest mt-1.5 opacity-90">
                     {details.subtitle}
@@ -646,10 +723,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 </div>
 
                 {/* Ultra highlighted, premium bold responsive title */}
-                <h1 className="text-2xl md:text-[28px] font-[1000] tracking-tight leading-[115%]"
-                    style={{ color: details.isDarkTheme ? '#ffffff' : '#0f172a' }}>
-                  {details.title || 'Inscrições Abertas / Oportunidade'}
-                </h1>
+                {renderTitle(
+                  "text-2xl md:text-[28px] font-[1000] tracking-tight leading-[115%]",
+                  "Inscrições Abertas / Oportunidade",
+                  { color: details.isDarkTheme ? '#ffffff' : '#0f172a' }
+                )}
 
                 {details.subtitle && (
                   <p className="text-xs font-bold leading-normal border-l-3 pl-3 text-stone-500 dark:text-stone-300 animate-fade-in"
@@ -765,10 +843,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               </div>
 
               {/* Cyber premium title focused on scientific relevance */}
-              <h1 className="text-2xl md:text-[27px] font-[1000] tracking-tight leading-[110%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
-                  style={{ color: details.isDarkTheme ? '#ffffff' : '#0a1d12' }}>
-                {details.title || 'Pesquisa Científica e Inovação'}
-              </h1>
+              {renderTitle(
+                "text-2xl md:text-[27px] font-[1000] tracking-tight leading-[110%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]",
+                "Pesquisa Científica e Inovação",
+                { color: details.isDarkTheme ? '#ffffff' : '#0a1d12' }
+              )}
 
               {details.subtitle && (
                 <p className="text-[11px] font-bold italic tracking-wide leading-relaxed border-l-3 pl-2.5"
@@ -863,10 +942,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               {/* Testimonial Quote and Headline */}
               <div className="text-center flex flex-col gap-2 max-w-[95%]">
                 {/* Styled prominent quote speech */}
-                <h1 className="text-lg md:text-xl font-extrabold tracking-tight leading-relaxed italic text-stone-900 dark:text-stone-100 px-2"
-                    style={{ color: details.isDarkTheme ? '#ffffff' : '#0f172a' }}>
-                  {details.title || '"A educação científica mudou os rumos do meu destino."'}
-                </h1>
+                {renderTitle(
+                  "text-lg md:text-xl font-extrabold tracking-tight leading-relaxed italic text-stone-900 dark:text-stone-100 px-2",
+                  '"A educação científica mudou os rumos do meu destino."',
+                  { color: details.isDarkTheme ? '#ffffff' : '#0f172a' }
+                )}
 
                 {/* Divider line style */}
                 <div className="w-12 h-0.5 mx-auto rounded" style={{ backgroundColor: secondaryColor }} />
