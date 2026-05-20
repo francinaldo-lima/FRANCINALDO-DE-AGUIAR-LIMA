@@ -16,57 +16,68 @@ export function IfmaLogo({
   colorOverride
 }: IfmaLogoProps) {
   // Official IFMA institutional colors
-  const greenColor = '#0B7A3B';
-  const redColor = '#C8102E';
+  const officialGreen = '#0B7A3B';
+  const officialRed = '#C8102E';
   
-  // Decide active colors based on theme
-  const textColor = isDarkTheme ? '#FFFFFF' : '#1C1917'; // Elegant charcoal stone-900 or pitch white
-  const greenFill = colorOverride || greenColor;
+  // High contrast text colors for modern institucional look
+  const textColor = isDarkTheme ? '#FFFFFF' : '#0F172A'; // Slate-900 or Pure White
+  const greenFill = colorOverride || (isDarkTheme ? '#10B981' : officialGreen); // Slight highlight on dark grid
 
-  // Pixel-perfect SVG Symbol containing the iconic Red ball and Green rounded square matrix (IF initials)
+  // Symmetrical 3x4 grid alignment of the "IF" symbol
+  // Square side S = 32, Spacing G = 8, Margin/Padding P = 4
+  // Row Height/Col Width: 32px
+  // Grid coordinates:
+  // Col 1: x=4, Col 2: x=44, Col 3: x=84 (Width = 120px)
+  // Row 1: y=4, Row 2: y=44, Row 3: y=84, Row 4: y=124 (Height = 160px)
   const renderSymbol = (svgSizeClass: string) => {
     return (
       <svg
-        viewBox="0 0 140 180"
-        className={`${svgSizeClass} shrink-0`}
+        viewBox="0 0 120 160"
+        className={`${svgSizeClass} shrink-0 filter drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.12)] transition-transform duration-350 hover:scale-[1.03]`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
         {/* ROW 1 */}
-        {/* Column 1: Red circle representing the iconic red dot */}
-        <circle cx="30" cy="30" r="22" fill={redColor} />
+        {/* Column 1: Perfect Red circle representing the iconic red dot of the letter "i" */}
+        {/* Centered exactly inside the Row 1, Col 1 bounding box (x: 4..36, y: 4..36) */}
+        <circle cx="20" cy="20" r="16" fill={officialRed} />
         {/* Column 2: Green square */}
-        <rect x="62" y="8" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="44" y="4" width="32" height="32" fill={greenFill} />
         {/* Column 3: Green square */}
-        <rect x="104" y="8" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="84" y="4" width="32" height="32" fill={greenFill} />
 
         {/* ROW 2 */}
         {/* Column 1: Green square */}
-        <rect x="12" y="50" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="4" y="44" width="32" height="32" fill={greenFill} />
         {/* Column 2: Green square */}
-        <rect x="62" y="50" width="34" height="34" rx="5" fill={greenFill} />
-        {/* Column 3 is empty in Row 2 */}
+        <rect x="44" y="44" width="32" height="32" fill={greenFill} />
 
         {/* ROW 3 */}
         {/* Column 1: Green square */}
-        <rect x="12" y="92" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="4" y="84" width="32" height="32" fill={greenFill} />
         {/* Column 2: Green square */}
-        <rect x="62" y="92" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="44" y="84" width="32" height="32" fill={greenFill} />
         {/* Column 3: Green square */}
-        <rect x="104" y="92" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="84" y="84" width="32" height="32" fill={greenFill} />
 
         {/* ROW 4 */}
         {/* Column 1: Green square */}
-        <rect x="12" y="134" width="34" height="34" rx="5" fill={greenFill} />
+        <rect x="4" y="124" width="32" height="32" fill={greenFill} />
         {/* Column 2: Green square */}
-        <rect x="62" y="134" width="34" height="34" rx="5" fill={greenFill} />
-        {/* Column 3 is empty in Row 4 */}
+        <rect x="44" y="124" width="32" height="32" fill={greenFill} />
       </svg>
     );
   };
 
   if (variant === 'vertical') {
-    const symbolSize = size === 'sm' ? 'w-10 h-12' : size === 'md' ? 'w-16 h-20' : size === 'lg' ? 'w-24 h-28' : 'w-14 h-18';
+    // Sizing for 3:4 aspect ratio
+    const symbolSize = 
+      size === 'sm' ? 'w-[30px] h-[40px]' : 
+      size === 'md' ? 'w-[48px] h-[64px]' : 
+      size === 'lg' ? 'w-[72px] h-[96px]' : 
+      'w-[42px] h-[56px]';
+
     return (
       <div className={`flex flex-col items-center text-center select-none ${className}`}>
         {/* Icon on top */}
@@ -75,29 +86,28 @@ export function IfmaLogo({
         {/* Text lines vertically stacked, precisely styled like official campus mark */}
         <div className="mt-3 flex flex-col items-center">
           <span
-            className="text-[14px] font-[900] tracking-tight leading-none uppercase"
+            className="text-[12.5px] font-[900] tracking-tight leading-none uppercase"
             style={{ color: textColor, fontFamily: '"Inter", sans-serif' }}
           >
             INSTITUTO FEDERAL
           </span>
           <span
-            className="text-[12px] font-medium tracking-[0.16em] leading-normal mt-[1px]"
-            style={{ color: isDarkTheme ? '#E5E7EB' : '#4B5563' }}
+            className="text-[11px] font-medium tracking-[0.18em] leading-normal mt-[3px]"
+            style={{ color: isDarkTheme ? '#94A3B8' : '#475569' }}
           >
             Maranhão
           </span>
           
           {/* Solid Green accent divider line */}
-          <div className="w-24 h-[1.5px] my-1.5" style={{ backgroundColor: greenFill }} />
+          <div className="w-20 h-[1.5px] my-2" style={{ backgroundColor: greenFill }} />
           
           <span
-            className="text-[12px] font-normal tracking-[0.08em] leading-none"
-            style={{ color: textColor }}
+            className="text-[11.5px] font-normal tracking-[0.08em] leading-none text-neutral-500 dark:text-neutral-400"
           >
             Campus
           </span>
           <span
-            className="text-[12px] font-semibold tracking-[0.08em] leading-relaxed mt-[2px]"
+            className="text-[13px] font-black tracking-[0.04em] leading-relaxed mt-[2px]"
             style={{ color: textColor }}
           >
             Carolina
@@ -107,29 +117,34 @@ export function IfmaLogo({
     );
   }
 
-  // Horizontal variant (default)
-  const symbolSize = size === 'sm' ? 'w-8 h-10' : size === 'md' ? 'w-12 h-16' : size === 'lg' ? 'w-18 h-22' : 'w-10 h-14';
+  // Horizontal variant (default) - sizing for 3:4 aspect ratio
+  const symbolSize = 
+    size === 'sm' ? 'w-[24px] h-[32px]' : 
+    size === 'md' ? 'w-[39px] h-[52px]' : 
+    size === 'lg' ? 'w-[54px] h-[72px]' : 
+    'w-[33px] h-[44px]';
+
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
       {/* Icon to the left */}
       {renderSymbol(symbolSize)}
       
       {/* Text group carefully formatted on the right */}
-      <div className="flex flex-col text-left">
+      <div className="flex flex-col text-left justify-center">
         <span
-          className="text-[13px] font-[900] tracking-tight leading-none uppercase"
+          className="text-[12px] md:text-[13px] font-[950] tracking-tight leading-none uppercase"
           style={{ color: textColor, fontFamily: '"Inter", sans-serif' }}
         >
           INSTITUTO FEDERAL
         </span>
         <span
-          className="text-[11.5px] font-light tracking-[0.08em] leading-normal"
-          style={{ color: isDarkTheme ? '#D1D5DB' : '#475569' }}
+          className="text-[10px] md:text-[10.5px] font-medium tracking-[0.15em] leading-normal mt-[1px]"
+          style={{ color: isDarkTheme ? '#94A3B8' : '#475569' }}
         >
           Maranhão
         </span>
         <span
-          className="text-[11.5px] font-bold tracking-[0.06em] leading-none mt-[2px]"
+          className="text-[11px] md:text-[12px] font-extrabold tracking-wide leading-none mt-[2.5px]"
           style={{ color: textColor }}
         >
           Campus Carolina
