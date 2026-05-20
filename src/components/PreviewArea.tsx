@@ -154,12 +154,12 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={details.isDarkTheme}
                 colorOverride={primaryColor}
-                size="sm"
+                size="md"
               />
               
               {/* Premium Floating Category Badge with high-contrast text */}
               {details.category && (
-                <span className="px-3.5 py-1.5 rounded-lg text-[9px] uppercase font-black tracking-widest text-white shadow-[0_4px_12px_rgba(11,122,59,0.25)] border border-white/10 transition-transform duration-300 hover:scale-105"
+                <span className="px-4 py-2 rounded-lg text-[10.5px] uppercase font-black tracking-widest text-white shadow-[0_4px_12px_rgba(11,122,59,0.25)] border border-white/10 transition-transform duration-300 hover:scale-105"
                       style={{ 
                         backgroundColor: primaryColor,
                         backgroundImage: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`
@@ -174,24 +174,24 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                  style={{ outline: `1px solid ${primaryColor}20`, outlineOffset: '3.5px' }}>
               {imageElement}
               {details.credits && (
-                <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-[8.5px] text-white/90 opacity-90 flex items-center gap-1.5 border border-white/10 font-mono tracking-tight shadow-md">
-                  <User className="w-[11px] h-[11px] text-emerald-400" /> {details.credits}
+                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-black/85 backdrop-blur-md text-[10px] text-white/90 opacity-95 flex items-center gap-1.5 border border-white/10 font-mono tracking-tight shadow-md">
+                  <User className="w-[12px] h-[12px] text-emerald-400" /> {details.credits}
                 </div>
               )}
             </div>
 
             {/* Bottom Content Area */}
-            <div className="relative z-10 flex flex-col gap-3.5">
+            <div className="relative z-10 flex flex-col gap-4">
               <div className="flex items-center gap-2">
                 {/* Event / Action header if date present */}
                 {details.date && (
-                  <div className="self-start flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-black tracking-wide shadow-sm border"
+                  <div className="self-start flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10.5px] font-black tracking-wide shadow-sm border"
                        style={{
                          backgroundColor: `${secondaryColor}12`,
                          borderColor: `${secondaryColor}30`,
                          color: secondaryColor
                        }}>
-                    <Calendar className="w-3.5 h-3.5" />
+                    <Calendar className="w-4 h-4" />
                     <span>{details.date}</span>
                   </div>
                 )}
@@ -199,14 +199,14 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               </div>
 
               {/* Title & subtitle group */}
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-2">
                 {renderTitle(
-                  "text-2xl md:text-[30px] font-[1000] tracking-tight leading-[112%] filter drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.12)]",
+                  "text-3xl md:text-[34px] font-[1000] tracking-tight leading-[112%] filter drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.12)]",
                   "Título da Notícia Institucional",
                   { color: details.isDarkTheme ? '#ffffff' : '#0d1f14' }
                 )}
                 {details.subtitle && (
-                  <p className="text-xs font-bold leading-relaxed opacity-95 border-l-[3.5px] pl-3"
+                  <p className="text-sm font-bold leading-relaxed opacity-95 border-l-[3.5px] pl-3"
                      style={{ borderColor: primaryColor, color: details.isDarkTheme ? '#cbd5e1' : '#334155' }}>
                     {details.subtitle}
                   </p>
@@ -215,19 +215,19 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
               {/* Description body with smooth line-clamp */}
               {details.description && (
-                <p className="text-[10.5px] leading-relaxed opacity-85 line-clamp-3 my-0.5"
+                <p className="text-[12.5px] leading-relaxed opacity-85 line-clamp-3 my-0.5"
                    style={{ color: details.isDarkTheme ? '#f1f5f9' : '#475569' }}>
                   {details.description}
                 </p>
               )}
 
               {/* Fine horizontal dividing rules */}
-              <div className="flex items-center justify-between border-t pt-3.5 mt-1 border-dashed"
+              <div className="flex items-center justify-between border-t pt-4 mt-1 border-dashed"
                    style={{ borderColor: `${primaryColor}20` }}>
-                <span className="text-[8.5px] font-mono tracking-widest uppercase opacity-75 font-bold" style={{ color: details.isDarkTheme ? '#94a3b8' : '#475569' }}>
+                <span className="text-[10px] font-mono tracking-widest uppercase opacity-80 font-black" style={{ color: details.isDarkTheme ? '#cbd5e1' : '#334155' }}>
                   #OrgulhoDeSerIFMA • {details.event || 'Campus Carolina'}
                 </span>
-                <span className="text-[8.5px] font-black tracking-wider hover:opacity-80 transition underline decoration-dotted" style={{ color: primaryColor }}>
+                <span className="text-[10px] font-black tracking-wider hover:opacity-80 transition underline decoration-dotted" style={{ color: primaryColor }}>
                   carolina.ifma.edu.br
                 </span>
               </div>
@@ -250,15 +250,15 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                  style={{ backgroundColor: secondaryColor }} />
 
             {/* Event Header styling */}
-            <div className="flex flex-col items-center text-center relative z-10 gap-2.5">
+            <div className="flex flex-col items-center text-center relative z-10 gap-3">
               <IfmaLogo
                 variant="horizontal"
                 isDarkTheme={details.isDarkTheme}
                 colorOverride={primaryColor}
-                size="sm"
-                className="mb-1"
+                size="md"
+                className="mb-1.5"
               />
-              <span className="px-3.5 py-1.5 rounded-lg text-[9px] font-black tracking-widest text-white shadow-[0_4px_12px_rgba(200,16,46,0.25)] uppercase mb-0.5"
+              <span className="px-4 py-2 rounded-lg text-[10.5px] font-black tracking-widest text-white shadow-[0_4px_12px_rgba(200,16,46,0.25)] uppercase mb-0.5"
                     style={{ 
                       backgroundColor: secondaryColor,
                       backgroundImage: `linear-gradient(135deg, ${secondaryColor}, #9e0c24)`
@@ -268,12 +268,12 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               
               {/* Premium Title displaying extreme contrast */}
               {renderTitle(
-                "text-2xl md:text-[34px] font-[1000] tracking-tighter leading-[108%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.18)]",
+                "text-3xl md:text-[38px] font-[1000] tracking-tighter leading-[108%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.18)]",
                 "CONGRESSO ACADÊMICO",
                 { color: details.isDarkTheme ? '#ffffff' : '#0f172a' }
               )}
               {details.subtitle && (
-                <p className="text-[11px] font-black tracking-[0.16em] text-[#4b5563] dark:text-[#cbd5e1] uppercase mt-0.5">
+                <p className="text-[12.5px] font-black tracking-[0.16em] text-[#4b5563] dark:text-[#cbd5e1] uppercase mt-0.5">
                   {details.subtitle}
                 </p>
               )}
@@ -285,8 +285,8 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               {imageElement}
               {details.event && (
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent p-[5%] text-left">
-                  <div className="flex items-center gap-1.5 text-white/95 font-mono text-[9px] uppercase tracking-wider font-bold">
-                    <MapPin className="w-3.5 h-3.5 text-red-500 animate-pulse" />
+                  <div className="flex items-center gap-1.5 text-white/95 font-mono text-[10.5px] uppercase tracking-wider font-bold">
+                    <MapPin className="w-4 h-4 text-red-500 animate-pulse" />
                     <span>{details.event}</span>
                   </div>
                 </div>
@@ -302,20 +302,20 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               <div className="grid grid-cols-2 gap-3 divide-x divide-neutral-250 dark:divide-neutral-800">
                 <div className="flex flex-col items-center justify-center text-center px-1">
                   <div className="flex items-center gap-1.5 mb-1" style={{ color: secondaryColor }}>
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span className="text-[9.5px] font-black uppercase tracking-widest font-sans">CRONOGRAMA</span>
+                    <Calendar className="w-4 h-4" />
+                    <span className="text-[11px] font-black uppercase tracking-widest font-sans">CRONOGRAMA</span>
                   </div>
-                  <span className="text-[11px] font-black opacity-95 leading-tight text-neutral-800 dark:text-neutral-100">
+                  <span className="text-[13px] font-black opacity-95 leading-tight text-neutral-800 dark:text-neutral-100">
                     {details.date || 'Em Breve'}
                   </span>
                 </div>
                 
                 <div className="flex flex-col items-center justify-center text-center px-1">
                   <div className="flex items-center gap-1.5 mb-1" style={{ color: primaryColor }}>
-                    <Clock className="w-3.5 h-3.5" />
-                    <span className="text-[9.5px] font-black uppercase tracking-widest font-sans">PORTAL INSCRIÇÕES</span>
+                    <Clock className="w-4 h-4" />
+                    <span className="text-[11px] font-black uppercase tracking-widest font-sans">PORTAL INSCRIÇÕES</span>
                   </div>
-                  <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 font-mono underline break-all leading-tight">
+                  <span className="text-[11.5px] font-bold text-emerald-600 dark:text-emerald-400 font-mono underline break-all leading-tight">
                     carolina.ifma.edu.br
                   </span>
                 </div>
@@ -323,7 +323,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
               {details.description && (
                 <div className="border-t mt-3 pt-2.5 border-neutral-200/20">
-                  <p className="text-[10.5px] leading-relaxed opacity-85 text-center line-clamp-2"
+                  <p className="text-[12.5px] leading-relaxed opacity-85 text-center line-clamp-2"
                      style={{ color: details.isDarkTheme ? '#d1d5db' : '#4b5563' }}>
                     {details.description}
                   </p>
@@ -332,7 +332,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             </div>
 
             {/* Footer and Source credits */}
-            <div className="flex items-center justify-between text-[8px] opacity-75 mt-3.5 border-t pt-2.5 font-mono tracking-wider"
+            <div className="flex items-center justify-between text-[10px] opacity-80 mt-3.5 border-t pt-2.5 font-mono tracking-wider"
                  style={{ borderColor: `${primaryColor}20` }}>
               <span>IFMA CAMPUS CAROLINA • PORTAL OFICIAL</span>
               {details.credits ? <span className="font-extrabold text-red-650 dark:text-red-400">FONTE: {details.credits}</span> : <span>DIVULGAÇÃO ACADÊMICA</span>}
@@ -361,20 +361,20 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={true}
                 colorOverride="#ffffff"
-                size="sm"
-                className="mb-3.5 opacity-95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                size="md"
+                className="mb-4 opacity-100 drop-shadow-[0_2.5px_10px_rgba(0,0,0,0.6)]"
               />
-              <div className="inline-block px-4 py-1 rounded-sm skew-x-[-12deg] bg-yellow-400 text-black text-[10px] font-black tracking-widest uppercase shadow-[0_4px_12px_rgba(250,204,21,0.35)] mb-2.5">
+              <div className="inline-block px-5 py-2 rounded-sm skew-x-[-12deg] bg-yellow-400 text-black text-[12px] font-black tracking-widest uppercase shadow-[0_4px_12px_rgba(250,204,21,0.35)] mb-3">
                 ⚡ {details.category || 'Competições / Jogos'} ⚡
               </div>
               
               {/* Ultra highlighted athletic title */}
               {renderTitle(
-                "text-3xl md:text-[42px] font-[1000] tracking-tighter italic text-yellow-300 uppercase leading-[100%] drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)] filter saturate-150-contrast-120",
+                "text-3xl md:text-[45px] font-[1000] tracking-tighter italic text-yellow-300 uppercase leading-[100%] drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)] filter saturate-150-contrast-120",
                 "MOMENTO ESPORTE"
               )}
               {details.subtitle && (
-                <p className="text-[10px] font-black tracking-widest text-neutral-100 uppercase mt-1.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+                <p className="text-[12px] font-black tracking-widest text-neutral-100 uppercase mt-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
                   {details.subtitle}
                 </p>
               )}
@@ -385,34 +385,34 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                  style={{ borderColor: '#ffffff', outline: `3.5px solid ${primaryColor}` }}>
               {imageElement}
               {details.credits && (
-                <span className="absolute top-2.5 left-2.5 bg-black/90 px-2.5 py-1 rounded text-[8px] font-mono font-black text-white border border-white/20">
+                <span className="absolute top-2.5 left-2.5 bg-black/90 px-3 py-1.5 rounded text-[10px] font-mono font-black text-white border border-white/20">
                   📸 FOTO: {details.credits}
                 </span>
               )}
             </div>
 
             {/* Details Box */}
-            <div className="px-[8%] pb-[6%] relative z-10 flex flex-col gap-3">
+            <div className="px-[8%] pb-[6%] relative z-10 flex flex-col gap-3.5">
               <div className="flex shadow-[0_8px_24px_rgba(0,0,0,0.4)] rounded-lg overflow-hidden border border-white/10">
-                <div className="flex-1 px-3 py-2 text-center text-white font-mono"
+                <div className="flex-1 px-4 py-2.5 text-center text-white font-mono"
                      style={{ backgroundColor: secondaryColor }}>
-                  <span className="block text-[8px] opacity-85 leading-none mb-1 font-sans font-black tracking-widest">DATA EXCLUSIVA</span>
-                  <span className="text-[13px] font-black tracking-tighter">{details.date || 'CONFIRMAR'}</span>
+                  <span className="block text-[10px] opacity-90 leading-none mb-1.5 font-sans font-black tracking-widest">DATA EXCLUSIVA</span>
+                  <span className="text-[15px] font-black tracking-tighter">{details.date || 'CONFIRMAR'}</span>
                 </div>
-                <div className="flex-1 px-3 py-2 text-center text-white bg-neutral-900 border-l border-white/10">
-                  <span className="block text-[8px] opacity-85 leading-none mb-1 font-sans tracking-widest">LOCAL / GINÁSIO</span>
-                  <span className="text-[10.5px] font-black uppercase truncate block">{details.event || 'CAMPUS CAROLINA'}</span>
+                <div className="flex-1 px-4 py-2.5 text-center text-white bg-neutral-900 border-l border-white/10">
+                  <span className="block text-[10px] opacity-90 leading-none mb-1.5 font-sans tracking-widest">LOCAL / GINÁSIO</span>
+                  <span className="text-[12.5px] font-black uppercase truncate block">{details.event || 'CAMPUS CAROLINA'}</span>
                 </div>
               </div>
 
               {details.description && (
-                <p className="text-[10.5px] italic leading-relaxed text-center font-bold line-clamp-2 px-1 text-slate-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                <p className="text-[12.5px] italic leading-relaxed text-center font-bold line-clamp-2 px-1 text-slate-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   "{details.description}"
                 </p>
               )}
 
               {/* Dynamic Slogan Bar */}
-              <div className="flex items-center justify-between text-[8px] tracking-widest font-black uppercase pt-1 text-neutral-400">
+              <div className="flex items-center justify-between text-[10px] tracking-widest font-black uppercase pt-1.5 text-neutral-400">
                 <span className="text-emerald-400">IFMA ATLETISMO</span>
                 <span className="text-red-400">SAÚDE & SUPERAÇÃO</span>
               </div>
@@ -447,8 +447,8 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="vertical"
                 isDarkTheme={true}
                 colorOverride={primaryColor}
-                size="sm"
-                className="scale-95 mb-1"
+                size="md"
+                className="mb-2"
               />
             </div>
 
@@ -460,20 +460,20 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
             {/* Large festive typography in frosted translucent card */}
             <div className="text-center relative z-10 flex flex-col gap-2 px-3">
-              <span className="text-[10px] font-black tracking-[0.25em] z-10 uppercase text-yellow-300 saturate-150-contrast-120 animate-pulse">
+              <span className="text-[12px] font-black tracking-[0.25em] z-10 uppercase text-yellow-300 saturate-150-contrast-120 animate-pulse">
                 ✦ {details.category || 'DATA COMEMORATIVA'} ✦
               </span>
               
               {/* Boxed Title for Celebration */}
               <div className="inline-block py-2.5 px-[6%] rounded-2xl bg-white/5 backdrop-blur-xl border border-white/15 shadow-[0_12px_36px_rgba(0,0,0,0.3)]">
                 {renderTitle(
-                  "text-2xl md:text-[29px] font-black tracking-tight leading-tight uppercase text-yellow-300",
+                  "text-2xl md:text-[32px] font-black tracking-tight leading-tight uppercase text-yellow-300",
                   "Parabéns e Celebrações"
                 )}
               </div>
               
               {details.subtitle && (
-                <p className="text-xs italic font-bold tracking-wide leading-normal text-slate-100 max-w-[90%] mx-auto mt-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                <p className="text-[14px] italic font-bold tracking-wide leading-normal text-slate-100 max-w-[90%] mx-auto mt-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   {details.subtitle}
                 </p>
               )}
@@ -482,7 +482,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             {/* Description message */}
             {details.description && (
               <div className="relative z-10 text-center px-[5%] max-w-[95%] mx-auto">
-                <p className="text-[10.5px] leading-relaxed font-medium text-stone-200">
+                <p className="text-[12px] leading-relaxed font-semibold text-stone-200">
                   {details.description}
                 </p>
               </div>
@@ -491,10 +491,10 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             {/* Premium Date stamp layout */}
             <div className="flex flex-col items-center relative z-10 border-t pt-3.5 mt-1"
                  style={{ borderColor: `${primaryColor}25` }}>
-              <span className="text-[11.5px] font-black tracking-wider text-yellow-300 font-mono">
+              <span className="text-[13px] font-black tracking-wider text-yellow-300 font-mono">
                 {details.date || 'EXCLUSIVO'}
               </span>
-              <span className="text-[8px] uppercase font-mono tracking-widest opacity-75 mt-0.5">
+              <span className="text-[10px] uppercase font-mono tracking-widest opacity-80 mt-1 font-black">
                 {details.event || 'CAMPUS CAROLINA • EDUCAÇÃO DO FUTURO'}
               </span>
             </div>
@@ -525,10 +525,10 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={false}
                 colorOverride={primaryColor}
-                size="sm"
-                className="scale-90 origin-left mt-2"
+                size="md"
+                className="origin-left mt-1 scale-95"
               />
-              <span className="text-[9.5px] font-mono tracking-[0.2em] uppercase font-black" style={{ color: secondaryColor }}>
+              <span className="text-[11px] font-mono tracking-[0.2em] uppercase font-black" style={{ color: secondaryColor }}>
                 {details.category || 'INFORMATIVO'}
               </span>
             </div>
@@ -540,17 +540,17 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             </div>
 
             {/* Swiss/Scandinavian typographic structure */}
-            <div className="flex flex-col gap-3.5 relative z-10 text-left">
+            <div className="flex flex-col gap-4 relative z-10 text-left">
               <div className="flex gap-3.5 items-stretch text-left">
                 <div className="w-1.5 rounded" style={{ backgroundColor: primaryColor }} />
                 
                 {details.titleHighlight !== 'normal' || details.titleFontSize || details.titleUppercase ? (
                   renderTitle(
-                    "text-2xl md:text-[27px] font-light tracking-tight text-neutral-950 leading-[115%]",
+                    "text-2xl md:text-[30px] font-[900] tracking-tight text-neutral-950 leading-[115%]",
                     "Informativo"
                   )
                 ) : (
-                  <h1 className="text-2xl md:text-[27px] font-light tracking-tight text-neutral-950 leading-[115%]">
+                  <h1 className="text-2xl md:text-[30px] font-light tracking-tight text-neutral-950 leading-[115%]">
                     {details.title ? (
                       <span>
                         {details.title.split(' ').map((word, i) => (
@@ -567,21 +567,21 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               </div>
 
               {details.subtitle && (
-                <p className="text-[10.5px] tracking-widest text-neutral-500 uppercase font-bold pl-4">
+                <p className="text-[12px] tracking-widest text-neutral-500 uppercase font-black pl-4">
                   {details.subtitle}
                 </p>
               )}
 
               {details.description && (
-                <p className="text-[10.5px] leading-relaxed text-neutral-600 line-clamp-3 pl-4">
+                <p className="text-[12.5px] leading-relaxed text-neutral-700 line-clamp-3 pl-4 font-medium">
                   {details.description}
                 </p>
               )}
 
               {/* Symmetrical fine print coordinates */}
-              <div className="flex items-center justify-between text-[8px] font-mono text-neutral-500 pt-3 border-t border-neutral-200/50">
+              <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 pt-3 border-t border-neutral-200/50">
                 <div className="flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-neutral-400" />
+                  <BookOpen className="w-4 h-4 text-neutral-400" />
                   <span className="font-extrabold">{details.event || 'CAMPUS CAROLINA'}</span>
                 </div>
                 <span>{details.date || 'IFMA OFFICIAL RELEASE'}</span>
@@ -607,9 +607,9 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
             {/* Campaign tag with active pulsing dot */}
             <div className="flex items-center justify-between relative z-10">
-              <div className="flex items-center gap-2 bg-white/60 dark:bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-250/30">
-                <Radio className="w-3.5 h-3.5 text-emerald-500 animate-pulse animate-duration-1000" />
-                <span className="text-[9px] font-black tracking-wider uppercase text-neutral-800 dark:text-neutral-200">
+              <div className="flex items-center gap-2 bg-white/60 dark:bg-black/40 backdrop-blur-md px-3.5 py-2 rounded-full border border-neutral-250/30 font-black">
+                <Radio className="w-4 h-4 text-emerald-500 animate-pulse animate-duration-1000" />
+                <span className="text-[10.5px] font-black tracking-wider uppercase text-neutral-800 dark:text-neutral-200">
                   {details.category || 'Campanha Estudantil'}
                 </span>
               </div>
@@ -618,8 +618,8 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={details.isDarkTheme}
                 colorOverride={primaryColor}
-                size="sm"
-                className="scale-85 origin-right"
+                size="md"
+                className="origin-right scale-95"
               />
             </div>
 
@@ -633,8 +633,8 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             </div>
 
             {/* Premium speech dialogue capsule with cartoon bubble shadow */}
-            <div className="relative z-10 flex flex-col gap-3">
-              <div className="text-white rounded-2xl p-4 md:p-5 shadow-2xl relative border"
+            <div className="relative z-10 flex flex-col gap-3.5">
+              <div className="text-white rounded-2xl p-4.5 md:p-5 shadow-2xl relative border"
                    style={{ 
                      backgroundImage: `linear-gradient(135deg, ${primaryColor}, #051a0d)`,
                      borderColor: `${primaryColor}45`
@@ -647,27 +647,27 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                      }} />
                 
                 {renderTitle(
-                  "text-xl md:text-[23px] font-[1000] tracking-tight leading-tight uppercase text-yellow-300 drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.4)]",
+                  "text-[22px] md:text-[25px] font-[1000] tracking-tight leading-tight uppercase text-yellow-300 drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.4)]",
                   "#ConexãoEstudantil IFMA"
                 )}
                 {details.subtitle && (
-                  <p className="text-[11px] text-white/95 font-black uppercase tracking-widest mt-1.5 opacity-90">
+                  <p className="text-[13px] text-white/95 font-black uppercase tracking-widest mt-1.5 opacity-90">
                     {details.subtitle}
                   </p>
                 )}
               </div>
 
               {details.description && (
-                <p className="text-[10.5px] leading-relaxed opacity-95 px-2.5 font-bold text-neutral-700 dark:text-neutral-300">
+                <p className="text-[12.5px] leading-relaxed opacity-95 px-2.5 font-bold text-neutral-700 dark:text-neutral-300">
                   {details.description}
                 </p>
               )}
 
               {/* Slogan details footer */}
-              <div className="flex items-center justify-between text-[8px] font-mono tracking-wider pt-2.5 border-t"
+              <div className="flex items-center justify-between text-[10px] font-mono tracking-wider pt-2.5 border-t"
                    style={{ borderColor: `${primaryColor}20` }}>
                 <span className="font-black text-neutral-500 dark:text-neutral-300">@IFMACAMPUSCAROLINA</span>
-                <span className="text-white px-2.5 py-1 rounded-md font-black uppercase text-[7.5px]"
+                <span className="text-white px-3 py-1.5 rounded-md font-black uppercase text-[9px]"
                       style={{ backgroundColor: secondaryColor }}>
                   {details.date || 'PARTICIPE'}
                 </span>
@@ -696,11 +696,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={details.isDarkTheme}
                 colorOverride={primaryColor}
-                size="sm"
+                size="md"
               />
               
               {/* Symmetrical coordination widget badge */}
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[9px] font-black tracking-widest uppercase bg-white/40 dark:bg-black/40 backdrop-blur-md"
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-[10px] font-black tracking-widest uppercase bg-white/40 dark:bg-black/40 backdrop-blur-md"
                    style={{ 
                      borderColor: `${secondaryColor}30`,
                      color: secondaryColor
@@ -718,7 +718,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 {imageElement}
                 
                 {details.credits && (
-                  <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded-md bg-stone-900/90 text-[7.5px] text-white font-mono font-bold border border-white/10 opacity-90 shadow-md">
+                  <div className="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-md bg-stone-900/95 text-[9px] text-white font-mono font-bold border border-white/10 opacity-90 shadow-md">
                     📂 DOC: {details.credits}
                   </div>
                 )}
@@ -732,7 +732,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               {/* Blueprint details panel */}
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded bg-stone-100 dark:bg-stone-900 border border-neutral-250 dark:border-white/5 font-mono"
+                  <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded bg-stone-100 dark:bg-stone-900 border border-neutral-250 dark:border-white/5 font-mono"
                         style={{ color: primaryColor }}>
                     // DESIGN_PLOT_UNIT_CAROLINA
                   </span>
@@ -741,20 +741,20 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
                 {/* Bold, premium responsive title */}
                 {renderTitle(
-                  "text-2xl md:text-[28px] font-[1000] tracking-tight leading-[115%]",
+                  "text-2xl md:text-[31px] font-[1000] tracking-tight leading-[115%]",
                   "Inscrições Abertas / Oportunidade",
                   { color: details.isDarkTheme ? '#ffffff' : '#0f172a' }
                 )}
 
                 {details.subtitle && (
-                  <p className="text-xs font-black leading-normal border-l-[3.5px] pl-3 text-stone-500 dark:text-stone-300"
+                  <p className="text-sm font-black leading-normal border-l-[3.5px] pl-3 text-stone-500 dark:text-stone-300"
                      style={{ borderColor: secondaryColor }}>
                     {details.subtitle}
                   </p>
                 )}
 
                 {details.description && (
-                  <p className="text-[10.5px] leading-relaxed opacity-85 line-clamp-3 mt-1.5"
+                  <p className="text-[12.5px] leading-relaxed opacity-85 line-clamp-3 mt-1.5"
                      style={{ color: details.isDarkTheme ? '#e2e8f0' : '#475569' }}>
                     {details.description}
                   </p>
@@ -769,15 +769,15 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                    borderColor: `${primaryColor}25` 
                  }}>
               <div className="flex flex-col justify-center">
-                <span className="text-[7.5px] font-black uppercase tracking-widest text-[#475569] dark:text-[#cbd5e1] block mb-0.5">PRAZOS LIMITE</span>
-                <span className="text-[11.5px] font-black uppercase tracking-tighter text-red-650 dark:text-red-400">
+                <span className="text-[9px] font-black uppercase tracking-widest text-[#475569] dark:text-[#cbd5e1] block mb-0.5">PRAZOS LIMITE</span>
+                <span className="text-[13px] font-black uppercase tracking-tighter text-red-650 dark:text-red-400">
                   ⏳ {details.date || 'Verificar Edital'}
                 </span>
               </div>
               <div className="flex flex-col justify-center border-l pl-3.5 border-dashed"
                    style={{ borderColor: `${primaryColor}25` }}>
-                <span className="text-[7.5px] font-black uppercase tracking-widest text-[#475569] dark:text-[#cbd5e1] block mb-0.5">DEPARTAMENTO ORGANIZADOR</span>
-                <span className="text-[11.5px] font-black uppercase tracking-tight text-neutral-800 dark:text-neutral-100 truncate">
+                <span className="text-[9px] font-black uppercase tracking-widest text-[#475569] dark:text-[#cbd5e1] block mb-0.5">DEPARTAMENTO ORGANIZADOR</span>
+                <span className="text-[13px] font-black uppercase tracking-tight text-neutral-800 dark:text-neutral-100 truncate">
                   🏛️ {details.event || 'Campus Carolina'}
                 </span>
               </div>
@@ -786,10 +786,10 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             {/* Footer */}
             <div className="flex items-center justify-between border-t pt-3 mt-3 relative z-10"
                  style={{ borderColor: `${primaryColor}15` }}>
-              <span className="text-[8.5px] font-mono tracking-widest uppercase opacity-75 font-bold" style={{ color: details.isDarkTheme ? '#94a3b8' : '#475569' }}>
+              <span className="text-[10px] font-mono tracking-widest uppercase opacity-80 font-black" style={{ color: details.isDarkTheme ? '#cbd5e1' : '#334155' }}>
                 PROGRAMA DE ASSISTÊNCIA ESTUDANTIL • IFMA
               </span>
-              <span className="text-[8.5px] font-black tracking-wide underline" style={{ color: primaryColor }}>
+              <span className="text-[10px] font-black tracking-wide underline" style={{ color: primaryColor }}>
                 carolina.ifma.edu.br
               </span>
             </div>
@@ -816,7 +816,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                  style={{ backgroundColor: primaryColor }} />
             
             {/* Techno status panel */}
-            <div className="absolute right-5 top-5 font-mono text-[7px] tracking-[0.2em] text-emerald-500 opacity-70 uppercase font-black">
+            <div className="absolute right-5 top-5 font-mono text-[8.5px] tracking-[0.2em] text-emerald-500 opacity-80 uppercase font-black">
               [ SYSTEM_CORE_OK ]
             </div>
 
@@ -826,11 +826,11 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={details.isDarkTheme}
                 colorOverride={primaryColor}
-                size="sm"
+                size="md"
               />
               
               {/* Technological Scientific Badge */}
-              <span className="bg-[#15803d]/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 px-3 py-1.5 rounded-lg text-[9px] font-black tracking-widest uppercase shadow-sm">
+              <span className="bg-[#15803d]/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 px-3.5 py-1.5 rounded-lg text-[11px] font-black tracking-widest uppercase shadow-sm">
                 🔬 CIÊNCIA & PESQUISA
               </span>
             </div>
@@ -843,7 +843,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
               {/* Symmetrical target reticle on photo */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
               
-              <div className="absolute bottom-3.5 left-3.5 flex items-center gap-2 bg-black/85 backdrop-blur-md px-3 py-1.5 rounded-lg text-[8.5px] font-mono tracking-widest border border-white/10 uppercase text-white font-black">
+              <div className="absolute bottom-3.5 left-3.5 flex items-center gap-2 bg-black/85 backdrop-blur-md px-3.5 py-2 rounded-lg text-[10px] font-mono tracking-widest border border-white/10 uppercase text-white font-black">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                 <span>{details.event || 'DESENVOLVIMENTO CIENTÍFICO'}</span>
               </div>
@@ -852,7 +852,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             {/* Content titles columns */}
             <div className="relative z-10 flex flex-col gap-2.5 text-left">
               <div className="flex items-center gap-2">
-                <span className="text-[8.5px] font-mono tracking-widest uppercase text-emerald-600 dark:text-emerald-400 font-black">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-emerald-600 dark:text-emerald-400 font-extrabold">
                   INFORMAÇÃO CIENTÍFICA / PROPESP CAROLINA
                 </span>
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-emerald-500/30 to-transparent" />
@@ -860,20 +860,20 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
 
               {/* Glowing scientific bold title */}
               {renderTitle(
-                "text-2xl md:text-[27px] font-[1000] tracking-tight leading-[110%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]",
+                "text-2xl md:text-[30px] font-[1000] tracking-tight leading-[110%] uppercase filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]",
                 "Pesquisa Científica e Inovação",
                 { color: details.isDarkTheme ? '#ffffff' : '#0a1d12' }
               )}
 
               {details.subtitle && (
-                <p className="text-[11.5px] font-black italic tracking-wide leading-relaxed border-l-[3.5px] pl-3"
+                <p className="text-[13px] font-black italic tracking-wide leading-relaxed border-l-[3.5px] pl-3"
                    style={{ borderColor: secondaryColor, color: details.isDarkTheme ? '#cbd5e1' : '#4b5563' }}>
                   {details.subtitle}
                 </p>
               )}
 
               {details.description && (
-                <p className="text-[10px] leading-relaxed opacity-85 line-clamp-3 my-0.5"
+                <p className="text-[12px] leading-relaxed opacity-85 line-clamp-3 my-0.5 font-medium"
                    style={{ color: details.isDarkTheme ? '#cbd5e1' : '#475569' }}>
                   {details.description}
                 </p>
@@ -883,21 +883,21 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
             {/* Techno widgets blocks parameters */}
             <div className="grid grid-cols-2 gap-3 mt-3.5 relative z-10">
               <div className="bg-stone-100 dark:bg-stone-900/90 rounded-xl p-2.5 border border-neutral-200 dark:border-stone-850">
-                <span className="block text-[7.5px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-extrabold mb-0.5">DATA PUBLICAÇÃO</span>
-                <span className="text-[10.5px] font-black text-neutral-800 dark:text-neutral-100">
+                <span className="block text-[9px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-extrabold mb-0.5">DATA PUBLICAÇÃO</span>
+                <span className="text-[12px] font-black text-neutral-800 dark:text-neutral-100">
                   📅 {details.date || 'Maio de 2026'}
                 </span>
               </div>
               <div className="bg-stone-100 dark:bg-stone-900/90 rounded-xl p-2.5 border border-neutral-200 dark:border-stone-850">
-                <span className="block text-[7.5px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-extrabold mb-0.5">CRÉDITOS FONTE</span>
-                <span className="text-[10.5px] font-black text-neutral-800 dark:text-neutral-100 truncate block">
+                <span className="block text-[9px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 font-extrabold mb-0.5">CRÉDITOS FONTE</span>
+                <span className="text-[12px] font-black text-neutral-800 dark:text-neutral-100 truncate block">
                   ✍️ {details.credits || 'Secom Campus Carolina'}
                 </span>
               </div>
             </div>
 
             {/* Slogan details footer */}
-            <div className="flex items-center justify-between border-t pt-3 mt-3.5 relative z-10 border-neutral-200 dark:border-stone-850 font-mono text-[7.5px] text-[#64748b] tracking-wider uppercase">
+            <div className="flex items-center justify-between border-t pt-3 mt-3.5 relative z-10 border-neutral-200 dark:border-stone-850 font-mono text-[9.5px] text-[#64748b] tracking-wider uppercase">
               <span>IFMA CAROLINA • CIÊNCIA APLICADA</span>
               <span className="font-extrabold text-emerald-600 dark:text-emerald-400 hover:opacity-80 transition" style={{ color: primaryColor }}>propesp.ifma.edu.br</span>
             </div>
@@ -924,10 +924,10 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 variant="horizontal"
                 isDarkTheme={details.isDarkTheme}
                 colorOverride={primaryColor}
-                size="sm"
+                size="md"
               />
               
-              <span className="px-3.5 py-1.5 bg-stone-100 dark:bg-stone-900 border text-[8.5px] font-black tracking-widest uppercase rounded-lg shadow-sm"
+              <span className="px-3.5 py-1.5 bg-stone-100 dark:bg-stone-900 border text-[10.5px] font-black tracking-widest uppercase rounded-lg shadow-sm"
                     style={{ 
                       color: secondaryColor,
                       borderColor: `${secondaryColor}25`
@@ -943,7 +943,7 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 {imageElement}
                 
                 {/* Visual student marker badge overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-stone-950/85 text-[7px] text-white py-1 text-center font-bold tracking-widest uppercase truncate font-mono">
+                <div className="absolute bottom-0 inset-x-0 bg-stone-950/85 text-[8.5px] text-white py-1 text-center font-bold tracking-widest uppercase truncate font-mono">
                   {details.credits || 'EGRESSO / ALUNO'}
                 </div>
               </div>
@@ -967,13 +967,13 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                 <div className="w-16 h-[2.5px] mx-auto rounded" style={{ backgroundColor: secondaryColor }} />
 
                 {details.subtitle && (
-                  <p className="text-[11px] font-black text-neutral-600 dark:text-neutral-300 uppercase tracking-wide leading-snug">
+                  <p className="text-[13px] font-black text-neutral-600 dark:text-neutral-300 uppercase tracking-wide leading-snug">
                     {details.subtitle}
                   </p>
                 )}
 
                 {details.description && (
-                  <p className="text-[10px] leading-relaxed text-neutral-500 dark:text-neutral-400 font-medium px-[6%] line-clamp-3">
+                  <p className="text-[12px] leading-relaxed text-neutral-500 dark:text-neutral-400 font-medium px-[6%] line-clamp-3">
                     {details.description}
                   </p>
                 )}
@@ -986,13 +986,13 @@ export const PreviewArea = forwardRef<PreviewAreaRef, PreviewAreaProps>(({ detai
                    backgroundColor: details.isDarkTheme ? 'rgba(255, 255, 255, 0.03)' : 'rgba(200, 16, 46, 0.03)',
                    borderColor: `${secondaryColor}15` 
                  }}>
-              <span className="text-[9px] font-black uppercase tracking-wider" style={{ color: primaryColor }}>
+              <span className="text-[11px] font-black uppercase tracking-wider" style={{ color: primaryColor }}>
                 🎓 {details.date || 'Orgulho de fazer parte da história do IFMA Campus Carolina'}
               </span>
             </div>
 
             {/* Federal network citation seal */}
-            <div className="flex items-center justify-between border-t pt-3 mt-3 relative z-10 border-neutral-150 text-[8.5px] font-mono uppercase text-neutral-400">
+            <div className="flex items-center justify-between border-t pt-3 mt-3 relative z-10 border-neutral-150 text-[10px] font-mono uppercase text-neutral-400 font-black">
               <span className="font-bold">REDE FEDERAL DE EDUCAÇÃO PROFISSIONAL</span>
               <span className="font-extrabold text-red-650 dark:text-red-400 select-none" style={{ color: secondaryColor }}>#DEPOIMENTOS</span>
             </div>
