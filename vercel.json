@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/api/health", "destination": "/api/health.ts" },
+    { "source": "/api/generate-caption", "destination": "/api/generate-caption.ts" },
+    { "source": "/api/suggest-composition", "destination": "/api/suggest-composition.ts" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
