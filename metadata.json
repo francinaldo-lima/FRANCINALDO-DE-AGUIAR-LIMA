@@ -1,0 +1,6 @@
+{
+  "name": "Gerador de Posts IFMA Carolina",
+  "description": "Gerador premium e inteligente de artes e legendas institucionais para o Instagram do IFMA Campus Carolina.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
